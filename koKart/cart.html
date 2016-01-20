@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>KO Shopping Cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.css" />
+    <link rel="styleshee" type="text/css" hfef="Content/style.css" />
+    <script type="text/javascript" src="Scripts/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="Scripts/knockout-3.3.0.debug.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="Scripts/models/product.js"></script>
+    <script type="text/javascript" src="Scripts/viewmodels/catalogVM.js"></script>
+    <script>
+        $(document).ready(function () {
+            ko.applyBindings(vm);
+        });
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" id="catalogContainer">
+            <div class="col-xs-12" data-bind="template:{name:'header'}"></div>
+            <div class="col-xs-6" data-bind="template:{name:'catalog'}"></div>
+            <div id="cartContainer" class="col-xs-6 well hidden" data-bind="template:{name:'cart'}"></div>
+        </div>
+        <div class="row hidden" id="orderContainer" data-bind="template:{name:'order'}">
+        </div>
+        <div data-bind="template: {name:'add-to-catalog-modal'}"></div>
+        <div data-bind="template: {name:'finish-order-modal'}"></div>
+    </div>
+    <script type="text/html" id="header">
+        <h1>
+            Catalog
+        </h1>
+
+        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addToCatalogModal">
+            Add New Product
+        </button>
+
+        <button class="btn btn-primary btn-sm" data-bind="click: showCartDetails, enable: cartHasProducts">
+            Show Cart Details
+        </button>
+        <hr/>
+    </script>
+    <script type="text/html" id="catalog"></script>
+    <script type="text/html" id="add-to-catalog-modal"></script>
+    <script type="text/html" id="cart-widget"></script>
+    <script type="text/html" id="cart-item"></script>
+    <script type="text/html" id="cart"></script>
+    <script type="text/html" id="order"></script>
+    <script type="text/html" id="finish-order-modal"></script>
+</body>
+</html>
